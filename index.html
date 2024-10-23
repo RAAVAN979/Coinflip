@@ -37,8 +37,6 @@
         align-self: center;
       }
 
-      marquee{ color: white;}
-
       p {
         color: black;
         text-align: center;
@@ -103,13 +101,19 @@
 
           if (ranNum < 0.5) {
             coin = "HEADS";
+            document.querySelector(".container").innerHTML =
+              '<img src="heads.png></img>';
           } else {
             coin = "TAILS";
+            document.querySelector(".container").innerHTML =
+              '<img src="tail.png></img>';
           }
 
           localStorage.setItem("coin", JSON.stringify(coin));
 
           document.getElementById("result").innerHTML = `And ITS ${coin}`;
+
+          document.querySelector(".container").innerHTML = '<img src="';
 
           document.getElementById("coinflip").innerHTML = `FLIP THE COIN`;
         }, 5000);
@@ -118,7 +122,7 @@
         const click = document.getElementById("coinflip");
 
         document.querySelector(".container").innerHTML =
-          '<img src="coinflip1.gif" height="300px" width="300px"></img>';
+          '<img src="coinflip1.gif" height="100px" width="200px"></img>';
 
         click.innerHTML = `Wait`;
       }
