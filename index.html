@@ -146,11 +146,11 @@
           if (ranNum < 0.5) {
             coin = "HEADS";
             document.querySelector(".container").innerHTML =
-              '<img src="heads.png height="200px" width="200px"></img>';
+              '<img src="heads.png" height="200px" width="200px"></img>';
           } else {
             coin = "TAILS";
             document.querySelector(".container").innerHTML =
-              '<img src="tails.png height="200px" width="200px"></img>';
+              '<img src="tail.png" height="200px" width="200px"></img>';
           }
 
           localStorage.setItem("coin", JSON.stringify(coin));
