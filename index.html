@@ -35,6 +35,7 @@
         color: white;
         font-size: 15px;
         font-weight: bold;
+        margin-top: -60px;
         border: none;
         border-radius: 20px;
         cursor: pointer;
@@ -61,18 +62,19 @@
       }
 
       .container {
-      
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
       }
 
-      img {
-        height: 100px;
-        width: 100px;
+      img {margin-top: 40px;
+        border: 2px solid red;
+        height: 150px;
+        width: 150px;
         margin-left: -50px;
         align-self: center;
+        filter: drop-shadow(0px 0px 4px  rgb(221, 201, 201));
       }
 
       .on-click {
@@ -95,7 +97,7 @@
         flex-direction: column;
       }
 
-      .result p {
+      .result p { margin-top: -10px;
         color: white;
         font-family: verdana;
       }
@@ -109,6 +111,8 @@
         img {
           height: 200px;
           width: 200px;
+          transform: rotateY('270deg');
+          transition: .5s linear infinite;
         }
       }
     </style>
@@ -137,6 +141,10 @@
         "history"
       ).innerHTML = `THE LAST FLIP WAS ${history}`;
 
+      const myCoin = document.querySelector('.image');
+
+
+     myCoin.addEventListener(ondrag,  coinFlip());
       function coinFlip() {
         setTimeout(function () {
           let ranNum = Math.random();
@@ -146,11 +154,11 @@
           if (ranNum < 0.5) {
             coin = "HEADS";
             document.querySelector(".container").innerHTML =
-              '<img src="heads.png" height="200px" width="200px"></img>';
+              '<img src="heads.png" height="300px" width="300px"></img>';
           } else {
             coin = "TAILS";
             document.querySelector(".container").innerHTML =
-              '<img src="tail.png" height="200px" width="200px"></img>';
+              '<img src="tail.png" height="300px" width="300px"></img>';
           }
 
           localStorage.setItem("coin", JSON.stringify(coin));
@@ -158,13 +166,13 @@
           document.getElementById("result").innerHTML = `And ITS ${coin}`;
 
           document.getElementById("coinflip").innerHTML = `FLIP THE COIN`;
-        }, 5000);
+        }, 4000);
       }
       function clickMe() {
         const click = document.getElementById("coinflip");
 
         document.querySelector(".container").innerHTML =
-          '<img src="conflip.gif" height="200px" width="200px"></img>';
+          '<img src="conflip.gif" height="300px" width="300px"></img>';
 
         click.innerHTML = `FLIPPING`;
       }
