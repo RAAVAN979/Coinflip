@@ -19,8 +19,8 @@
 
       h1:hover {
         cursor: grab;
-        text-shadow: 1px 1px 0px white, 2px 2px 0px white, 2px 3px 0px white,
-          2px 4px 0px white, 2px 5px 0px white;
+        text-shadow: 1px 1px 0px rgb(18, 17, 17), 2px 2px 0px rgb(19, 18, 18), 2px 3px 0px rgb(13, 12, 12),
+          2px 4px 0px rgb(10, 9, 9), 2px 5px 0px rgb(11, 10, 10);
       }
 
       div {
@@ -30,6 +30,17 @@
         align-items: center;
         justify-content: center;
       }
+       
+      .during {
+        background: rgb(2,0,36);
+        background: linear-gradient(292deg, rgba(2,0,36,1) 0%, rgba(36,37,31,1) 33%, rgba(251,255,0,1) 100%);
+      color: greenyellow;
+      width: 150px;
+      transition: 4s ease-out;
+      border: 2px solid green;
+
+      }
+
 
       button {
         color: white;
@@ -69,7 +80,6 @@
       }
 
       img {margin-top: 40px;
-       
         height: 150px;
         width: 150px;
         margin-left: -50px;
@@ -77,6 +87,9 @@
         filter: drop-shadow(0px 0px 4px  rgb(221, 201, 201));
       }
 
+      span{
+        color: orange;
+      }
       .on-click {
         position: relative;
         right: 122px;
@@ -107,6 +120,7 @@
           margin-top: 10vh;
           height: 200px;
         }
+
       }
     </style>
   </head>
@@ -128,6 +142,8 @@
       <p id="history">THE LAST FLIP WAS....</p>
     </div>
     <script>
+      const click = document.getElementById("coinflip");
+
       let history = JSON.parse(localStorage.getItem("coin"));
 
       document.getElementById(
@@ -137,8 +153,9 @@
       const myCoin = document.querySelector('.image');
 
 
-     myCoin.addEventListener(ondrag,  coinFlip());
-      function coinFlip() {
+     myCoin.addEventListener("touchmove", coinFlip());
+     
+     function coinFlip() {
         setTimeout(function () {
           let ranNum = Math.random();
 
@@ -154,15 +171,20 @@
               '<img src="tail.png" height="300px" width="300px"></img>';
           }
 
+           click.classList.remove('during');
+
           localStorage.setItem("coin", JSON.stringify(coin));
 
           document.getElementById("result").innerHTML = `And ITS ${coin}`;
 
           document.getElementById("coinflip").innerHTML = `FLIP THE COIN`;
-        }, 4000);
-      }
+        }, 4600);
+      };
+
       function clickMe() {
-        const click = document.getElementById("coinflip");
+        
+
+        click.classList.add('during');
 
         document.querySelector(".container").innerHTML =
           '<img src="conflip.gif" height="300px" width="300px"></img>';
