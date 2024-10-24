@@ -5,6 +5,25 @@
     <meta name="viewport" content="width= device-width, initial-scale = 1.0" />
     <meta charset="UTF-8" />
     <style>
+
+      .bodydur{
+        animation: flickering 1s infinite;
+      }
+
+      @keyframes flickering {
+        0%, 30%{
+          background-color: white;
+        }
+
+        31%, 60%{
+          background-color: black;
+        }
+         
+        60%, 100%{
+          background-color: silver;
+        }
+        
+      }
       body {
         background-color: #34282c;
       }
@@ -38,7 +57,24 @@
       width: 150px;
       transition: 4s ease-out;
       border: 2px solid green;
+       
+      }
 
+      .during::after{
+        content: 'F';
+        animation: load 2s steps(8) forwards;
+      }
+
+      @keyframes load{
+        0%{ content: 'FL';}
+        12.5%{ content: 'FLI';}
+        25%{ content: 'FLIP';}
+        37.5%{ content: 'FLIPP';}
+        50%{content: 'FLIPPI';}
+        62.50%{content: 'FLPPIN';}
+        75%{content: 'FLIPPING';}
+        87.5%{content: 'FLIPPING';}
+        100%{content: 'FLIPPING';}
       }
 
 
@@ -142,6 +178,7 @@
       <p id="history">THE LAST FLIP WAS....</p>
     </div>
     <script>
+
       const click = document.getElementById("coinflip");
 
       let history = JSON.parse(localStorage.getItem("coin"));
@@ -178,10 +215,14 @@
           document.getElementById("result").innerHTML = `And ITS ${coin}`;
 
           document.getElementById("coinflip").innerHTML = `FLIP THE COIN`;
+
+          document.body.classList.remove('bodydur');
         }, 4600);
       };
 
       function clickMe() {
+
+        document.body.classList.add('bodydur');
         
 
         click.classList.add('during');
@@ -189,7 +230,7 @@
         document.querySelector(".container").innerHTML =
           '<img src="conflip.gif" height="300px" width="300px"></img>';
 
-        click.innerHTML = `FLIPPING`;
+        click.innerHTML = ``;
       }
     </script>
   </body>
