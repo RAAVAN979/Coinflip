@@ -181,11 +181,7 @@
 
       const click = document.getElementById("coinflip");
 
-      let history = JSON.parse(localStorage.getItem("coin"));
-
-      document.getElementById(
-        "history"
-      ).innerHTML = `THE LAST FLIP WAS ${history}`;
+     
 
       const myCoin = document.querySelector('.image');
 
@@ -213,6 +209,7 @@
           localStorage.setItem("coin", JSON.stringify(coin));
 
           document.getElementById("result").innerHTML = `And ITS ${coin}`;
+          document.getElementById("history").innerHTML = `THE LAST FLIP WAS ${coin}`;
 
           document.getElementById("coinflip").innerHTML = `FLIP THE COIN`;
 
@@ -232,6 +229,8 @@
 
         click.innerHTML = ``;
       }
+
+       
     </script>
   </body>
 </html>
